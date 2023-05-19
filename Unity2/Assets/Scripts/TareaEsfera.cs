@@ -5,17 +5,18 @@ using UnityEngine;
 public class TareaEsfera : MonoBehaviour
 {
     public GameObject esfera;
+    public static bool colorEsfera = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void FixedUpdate()
