@@ -10,9 +10,9 @@ public class TareaMoulo6 : MonoBehaviour
 
     private void Awake()
     {
-        GameObject tempGameObject = Instantiate<GameObject>(prefabCubo);
-        tempGameObject.name = "Mi Segundo Cubo";
-        tempGameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+        //GameObject tempGameObject = Instantiate<GameObject>(prefabCubo);
+        //tempGameObject.name = "Mi Segundo Cubo";
+        //tempGameObject.GetComponent<MeshRenderer>().material.color = Color.red;
     }
 
     // Start is called before the first frame update
