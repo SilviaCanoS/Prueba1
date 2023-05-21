@@ -22,7 +22,7 @@ public class VariablesNumericas : MonoBehaviour
     //long miLong = long.MaxValue; //guarda el numero mas grande posible
     //ulong miLongConSigno = 0;
     int miInt = 0;
-    float miFloat = 0;
+    float miFloat = 1;
     public GameObject cubo;
 
 
@@ -52,7 +52,7 @@ public class VariablesNumericas : MonoBehaviour
 
     private void FixedUpdate()
     {
-        miFloat += 0.5f;
+        miFloat *= 1.5f;
         Debug.Log(miFloat);
     }
 }

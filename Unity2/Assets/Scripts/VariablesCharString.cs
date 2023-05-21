@@ -5,10 +5,11 @@ using UnityEngine;
 public class VariablesCharString : MonoBehaviour
 {
     //char c = '9';
-    //int i;
-    public string s = "Hola Mundo", pi, miNombre = "Silvia Elisa Cano Sarabia";
-    public List<string> l = new List<string>() {"rojo", "azul", "verde", "amarillo", "gris", "negro", "blanco",
-                                        "magenta", "cian"};
+    int i, i2;
+    bool b, b2;
+    public string s = "Hola Mundo", s2, pi, miNombre = "Silvia Elisa Cano Sarabia";
+    public List<string> l = new List<string>() {"rojo", "azul", "verde", "amarillo", "gris", "negro", 
+                                                "blanco", "magenta", "cian"};
     public GameObject esfera;
 
     // Start is called before the first frame update
@@ -27,8 +28,8 @@ public class VariablesCharString : MonoBehaviour
         //s = s + " desde aquí"; //concatenacion
         //s = s.Substring(0, 10); //Toma una parte de la cadena
 
-        pi = Mathf.PI.ToString();
-        Debug.Log($"Pi es igual a {pi.Substring(0, 6)}");
+        pi = Mathf.PI.ToString("N4");
+        Debug.Log($"Pi es igual a {pi}");
 
         string nombres = miNombre.Substring(0, 12);
         string apellidoPaterno = miNombre.Substring(13, 4);
@@ -38,6 +39,23 @@ public class VariablesCharString : MonoBehaviour
         string[] nombreSeparado = miNombre.Split(' ');
         for(int x = 0; x <= nombreSeparado.Length-1; x++)
             Debug.Log(nombreSeparado[x]);
+
+        s = Random.Range(1000, 9999).ToString();
+        s2 = Random.Range(1000, 9999).ToString();
+        b = int.TryParse(s, out i);
+        b2 = int.TryParse(s2, out i2);
+        if(b && b2) Debug.Log($"{s} + {s2} = {i + i2}");
+
+        s = "Amo el canto del zenzontle, pájaro de cuatrocientas voces";
+        s2 = "";
+        for(i = 0; i <= s.Length - 1; i++)
+        {
+            if(i%2 == 0) s2 += s[i] + ", ";
+        }
+        Debug.Log(s2.Trim().Substring(0, s2.Length - 2));
+
+        s = "Amo el color del jade y el enervante perfume de las flores";
+        Debug.Log(s.Substring(5));
     }
 
     // Update is called once per frame
