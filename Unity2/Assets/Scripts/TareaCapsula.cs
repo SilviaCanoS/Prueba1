@@ -5,8 +5,9 @@ using UnityEngine;
 public class TareaCapsula : MonoBehaviour
 {
     public GameObject capsula;
-    public bool esfera, cubo;
-    public static bool colorCapsula;
+    public TareaEsfera esfera;
+    public TareaCubo cubo;
+    public bool colorCapsula;
     private void Awake()
     {
         //Color c = new Color(Random.value, Random.value, Random.value);
@@ -27,12 +28,15 @@ public class TareaCapsula : MonoBehaviour
 
     private void FixedUpdate()
     {
-        colorCapsula = !colorCapsula;
-        esfera = TareaEsfera.colorEsfera;
-        cubo = TareaCubo.colorCubo;
-        if (cubo && esfera)
+        if (cubo.colorCubo && esfera.colorEsfera)
+        {
             capsula.GetComponent<MeshRenderer>().material.color = Color.white;
+            colorCapsula = true;
+        }
         else
+        {
             capsula.GetComponent<MeshRenderer>().material.color = Color.black;
+            colorCapsula = false;
+        }
     }
 }

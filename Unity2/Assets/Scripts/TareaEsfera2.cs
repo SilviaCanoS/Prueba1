@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class TareaEsfera2 : MonoBehaviour
 {
-    public bool cubo, cubo2, esfera, esferaColor, capsula, capsula2;
+    public TareaCubo cubo;
+    public TareaCubo2 cubo2;
+    public TareaEsfera esfera;
+    public bool esferaColor;
+    public TareaCapsula capsula;
+    public TareaCapsula2 capsula2;
     public GameObject esfera2;
     // Start is called before the first frame update
     void Start()
@@ -20,25 +25,19 @@ public class TareaEsfera2 : MonoBehaviour
 
     private void FixedUpdate()
     {
-        cubo = TareaCubo.colorCubo;
-        cubo2 = TareaCubo2.colorCubo2;
-        esfera = TareaEsfera.colorEsfera;
-        capsula = TareaCapsula.colorCapsula;
-        capsula2 = TareaCapsula2.colorCapsula2;
-
-        esferaColor = (cubo && cubo2) || (capsula && capsula2);
+        esferaColor = (cubo.colorCubo && cubo2.colorCubo2) || (capsula.colorCapsula && capsula2.colorCapsula2);
         switch (esferaColor)
         {
-            case true when esfera:
+            case true when esfera.colorEsfera:
                 esfera2.GetComponent<MeshRenderer>().material.color = Color.red;
                 break;
-            case false when esfera:
+            case false when esfera.colorEsfera:
                 esfera2.GetComponent<MeshRenderer>().material.color = Color.blue;
                 break;
-            case true when !esfera:
+            case true when !esfera.colorEsfera:
                 esfera2.GetComponent<MeshRenderer>().material.color = Color.green;
                 break;
-            case false when !esfera:
+            case false when !esfera.colorEsfera:
                 esfera2.GetComponent<MeshRenderer>().material.color = Color.yellow;
                 break;
             default:
