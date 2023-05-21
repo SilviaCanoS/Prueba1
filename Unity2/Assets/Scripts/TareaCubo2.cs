@@ -5,8 +5,8 @@ using UnityEngine;
 public class TareaCubo2 : MonoBehaviour
 {
     public GameObject cubo2;
-    public bool cubo;
-    public static bool colorCubo2;
+    public bool colorCubo2;
+    public TareaCubo cubo;
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +22,7 @@ public class TareaCubo2 : MonoBehaviour
 
     private void FixedUpdate()
     {
-        colorCubo2 = !colorCubo2;
-        cubo = TareaCubo.colorCubo;
-        cubo2.GetComponent<MeshRenderer>().material.color = cubo ? Color.black : Color.white;
-        cubo = !cubo;
+        cubo2.GetComponent<MeshRenderer>().material.color = cubo.colorCubo ? Color.white : Color.black;
+        colorCubo2 = cubo.colorCubo;
     }
 }

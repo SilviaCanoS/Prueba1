@@ -5,7 +5,7 @@ using UnityEngine;
 public class TareaCubo : MonoBehaviour
 {
     public GameObject cubo;
-    public static bool colorCubo;
+    public bool colorCubo;
     // Start is called before the first frame update
     void Start()
     {
