@@ -48,18 +48,18 @@ public class Ciclos : MonoBehaviour
             cont++;
         } while (cont <= matrizString.GetLength(0) - 1);
 
-        for (i = 0; i <= arregloA.Length - 1; i++) arregloA[i] = Random.Range(0, 99);
-        for (i = 0; i <= arregloB.Length - 1; i++) arregloB[i] = Random.Range(0, 99);
         for (i = 0; i <= arregloC.Length - 1; i++)
         {
+            arregloA[i] = Random.Range(0, 99);
+            arregloB[i] = Random.Range(0, 99);
             arregloC[i] = arregloA[i] + arregloB[i];
             Debug.Log(arregloA[i] + " + " + arregloB[i] + " = " + arregloC[i]);
         }
 
         foreach (string x in arregloString) //no se puede modificar el contador
         {
-            s = s + x + " ";
-            if (x == "very") s = s + x + " ";
+            s += x + " ";
+            if (x == "very") s += x + " ";
         }
         Debug.Log(s);
 
@@ -73,7 +73,7 @@ public class Ciclos : MonoBehaviour
         {
             suma = 0;
             for (j = 0; j <= matrizEnteros.GetLength(1) - 1; j++)
-                suma = suma + matrizEnteros[i, j];
+                suma += matrizEnteros[i, j];
             arregloResultado[i] = suma;
             Debug.Log(arregloResultado[i]);
         }
