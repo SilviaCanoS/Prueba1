@@ -18,7 +18,7 @@ public class EstructurasDeDatos : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CrearUnaLista(Random.Range(1, 10), Random.Range(0, 10), Random.Range(10, 20));
+        listaEnteros = CrearUnaLista(Random.Range(1, 10), Random.Range(0, 10), Random.Range(10, 20));
         foreach (var elemento in listaEnteros) Debug.Log(elemento);
 
         Debug.Log("Arreglo de enteros:");
@@ -27,13 +27,13 @@ public class EstructurasDeDatos : MonoBehaviour
             arregloNumeros[i] = Random.Range(0, 100);
             Debug.Log(arregloNumeros[i]);
         }
-        ArregloDescendente(arregloNumeros);
+        arregloNumeros = ArregloDescendente(arregloNumeros);
         foreach (var elemento in arregloNumeros) Debug.Log(elemento);
 
         listaEnteros.Add(listaEnteros[0]);
         Debug.Log("Lista:");
         foreach (var elemento in listaEnteros) Debug.Log(elemento);
-        DeListaAHashSet(listaEnteros);
+        hashEnteros = DeListaAHashSet(listaEnteros);
         foreach (var elemento in hashEnteros) Debug.Log(elemento);
 
         pilaString.Push("México");
@@ -52,42 +52,53 @@ public class EstructurasDeDatos : MonoBehaviour
 
     public List<int> CrearUnaLista(int tamaño, int rangoMin, int rangoMax)
     {
+        List<int> listaTemp = new List<int>();
         Debug.Log($"Se creará una lista de {tamaño} elementos, el menor podrá ser {rangoMin} y el mayor, {rangoMax}");
         for (int i = 0; i <= tamaño - 1; i++)
-            listaEnteros.Add(Random.Range(rangoMin, rangoMax + 1));
-        return listaEnteros;
+            listaTemp.Add(Random.Range(rangoMin, rangoMax + 1));
+        return listaTemp;
     }
 
     public int[] ArregloDescendente(int[] arregloEnteros)
     {
+        int[] arregloTemp = new int[arregloEnteros.Length];
         Debug.Log("Se ordenará el arreglo de manera descendente");
-        arregloNumeros = arregloEnteros.OrderByDescending(p => p).ToArray();
-        return arregloNumeros;
+        arregloTemp = arregloEnteros.OrderByDescending(p => p).ToArray();
+        return arregloTemp;
     }
 
     public HashSet<int> DeListaAHashSet(List<int> lista)
     {
         Debug.Log("Se transformará una lista en hashSet");
-        hashEnteros = new HashSet<int>(lista);
-        return hashEnteros;
+        HashSet<int>  hashTemp = new HashSet<int>(lista);
+        return hashTemp;
     }
 
     public void DePilaACola(Stack<string> pilaPaises)
     {
+        Queue<string> colaTemp = new Queue<string>();
         int tamaño = pilaPaises.Count;
         Debug.Log("El contenido de la pila:");
-        while(colaString.Count != tamaño)
+        while(colaTemp.Count != tamaño)
         {
             Debug.Log(pilaPaises.Peek());
-            colaString.Enqueue(pilaPaises.Peek());
+            colaTemp.Enqueue(pilaPaises.Peek());
             pilaPaises.Pop();
         }
         Debug.Log("El contenido de la cola:");
-        while(colaString.Count != 0)
+        while(colaTemp.Count != 0)
         {
-            Debug.Log(colaString.Peek());
-            colaString.Dequeue();
+            Debug.Log(colaTemp.Peek());
+            colaTemp.Dequeue();
         }
+
+        //Para no eliminar ningun dato ni de la pila ni de la cola
+        //foreach(string s in pilaPaises)
+        //{
+        //    Debug.Log(s);
+        //    colaTemp.Enqueue(s);
+        //}
+        //foreach(string s in colaTemp) Debug.Log(s); 
     }
 
     public void DemoListas()
